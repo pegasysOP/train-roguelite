@@ -45,8 +45,7 @@ public class TrainCar : MonoBehaviour
         if (dragging && Mouse.current.leftButton.wasReleasedThisFrame)
         {
             dragging = false;
-
-            transform.position -= new Vector3(0, 0, 0);
+            transform.position = new Vector3(transform.position.x, transform.position.y, 0);
             transform.localScale = Vector3.one;
 
             // Snap to closest index
