@@ -26,9 +26,9 @@ public class GameManager : MonoBehaviour
     private void Start()
     { 
         // for testing
-        trainController.AddCar(testCarPrefabs[0]);
-        trainController.AddCar(testCarPrefabs[1]);
-        trainController.AddCar(testCarPrefabs[2]);
+
+        foreach (TrainCar car in testCarPrefabs)
+            trainController.AddCar(car);
 
         zoneManager.upcomingEncounters = new List<TrackEncounter>
         {

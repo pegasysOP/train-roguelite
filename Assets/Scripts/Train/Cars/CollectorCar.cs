@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class CollectorCar : TrainCar
 {
+    [Header("Collector")]
     public int collectionQuantity = 3;
 
     public override void OnPowered()

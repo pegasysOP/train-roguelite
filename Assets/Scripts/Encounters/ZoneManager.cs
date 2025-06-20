@@ -74,11 +74,8 @@ public class ZoneManager : MonoBehaviour
 
         // attack random car for now
         EncounterHistoryPanel.Instance.AddEntry("Hazard hits!");
-        TrainCar attackedCar = trainController.cars[Random.Range(0, trainController.CarCount)];        
-        attackedCar.currentHealth--;
-
-        if (attackedCar.isBroken)
-            EncounterHistoryPanel.Instance.AddEntry($"{attackedCar.name} is broken!");
+        TrainCar attackedCar = trainController.cars[Random.Range(0, trainController.CarCount)];
+        attackedCar.Damage();
     }
 
     private void ResolveLoot()
