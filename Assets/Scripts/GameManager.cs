@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Testing")]
     public TrainController trainController;
+    public ZoneManager zoneManager;
     public List<TrainCar> testCarPrefabs = new List<TrainCar>();
 
     private void Awake()
@@ -21,10 +22,21 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+
     private void Start()
-    {
+    { 
+        // for testing
         trainController.AddCar(testCarPrefabs[0]);
         trainController.AddCar(testCarPrefabs[1]);
         trainController.AddCar(testCarPrefabs[2]);
+
+        zoneManager.upcomingEncounters = new List<TrackEncounter>
+        {
+            new TrackEncounter() { type = EncounterType.Hazard, description = "Rockslide" },
+            new TrackEncounter() { type = EncounterType.Loot, description = "Scrap pile" },
+            new TrackEncounter() { type = EncounterType.Hazard, description = "Bandit fire" }
+        };
+
+        zoneManager.StartZone();
     }
 }
