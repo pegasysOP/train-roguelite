@@ -40,6 +40,23 @@ public class TrainController : MonoBehaviour
         }
     }
 
+    public void SnapCarToNearestSlot(TrainCar draggedCar)
+    {
+        // TODO: add a min range so that it goes back to the original slot if you drop in a random spot on screen
+
+        cars.Remove(draggedCar);
+
+        int newIndex = 0;
+        for (int i = 0; i < cars.Count; i++)
+        {
+            if (draggedCar.transform.position.x < cars[i].transform.position.x)
+                newIndex = i + 1;
+        }
+
+        cars.Insert(newIndex, draggedCar);
+        RearrangeCars();
+    }
+
     public void ResetTrain()
     {
         foreach (var car in cars)

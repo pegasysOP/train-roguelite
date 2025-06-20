@@ -1,5 +1,7 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(BoxCollider2D))]
 public class TrainCar : MonoBehaviour
 {
     public string carName;
@@ -10,6 +12,47 @@ public class TrainCar : MonoBehaviour
 
     public bool isDamaged => currentHealth <= 1;
     public bool isDestroyed => currentHealth <= 0;
+
+    private Vector3 offset;
+    private bool dragging = false;
+
+    private void Update()
+    {
+        Vector2 mousePos = Mouse.current.position.ReadValue();
+        Vector3 worldMouse = Camera.main.ScreenToWorldPoint(mousePos);
+        worldMouse.z = 0;
+
+        if (Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(worldMouse, Vector2.zero);
+            if (hit.collider != null && hit.collider.gameObject == gameObject)
+            {
+                dragging = true;
+
+                // show above
+                transform.position -= new Vector3(0, 0, 1);
+                transform.localScale = Vector3.one * 1.2f;
+
+                offset = transform.position - worldMouse;
+            }
+        }
+
+        if (dragging && Mouse.current.leftButton.isPressed)
+        {
+            transform.position = worldMouse + offset;
+        }
+
+        if (dragging && Mouse.current.leftButton.wasReleasedThisFrame)
+        {
+            dragging = false;
+
+            transform.position -= new Vector3(0, 0, 0);
+            transform.localScale = Vector3.one;
+
+            // Snap to closest index
+            FindFirstObjectByType<TrainController>().SnapCarToNearestSlot(this);
+        }
+    }
 
     public virtual void OnHazard()
     {
