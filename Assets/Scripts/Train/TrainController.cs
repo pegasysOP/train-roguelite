@@ -7,8 +7,8 @@ public class TrainController : MonoBehaviour
     public int enginePower = 6; // max number of cars
     public List<TrainCar> cars = new List<TrainCar>();
 
-    public int FilledSlots => cars.Count;
-    public int FreeSlots => enginePower - FilledSlots;
+    public int CarCount => cars.Count;
+    public int EmptySlots => enginePower - CarCount;
 
     public bool CanAddCar => cars.Count < enginePower;
 
