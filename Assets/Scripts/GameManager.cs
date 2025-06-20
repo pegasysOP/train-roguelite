@@ -36,7 +36,5 @@ public class GameManager : MonoBehaviour
             new TrackEncounter() { type = EncounterType.Loot, description = "Scrap pile" },
             new TrackEncounter() { type = EncounterType.Hazard, description = "Bandit fire" }
         };
-
-        zoneManager.StartZone();
     }
 }
