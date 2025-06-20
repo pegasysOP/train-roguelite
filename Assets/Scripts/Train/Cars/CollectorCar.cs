@@ -6,6 +6,6 @@ public class CollectorCar : TrainCar
 
     public override void OnPowered()
     {
-        Debug.Log($"{carName} is powered and ready to collect");
+        EncounterHistoryPanel.Instance.AddEntry($"{carName} is powered and ready to collect");
     }
 }

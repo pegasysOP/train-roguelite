@@ -30,12 +30,12 @@ public class ZoneManager : MonoBehaviour
     {
         if (encounterIndex >= upcomingEncounters.Count)
         {
-            Debug.Log("Zone complete!");
+            EncounterHistoryPanel.Instance.AddEntry("Zone complete!");
             return;
         }
 
         TrackEncounter encounter = upcomingEncounters[encounterIndex];
-        Debug.Log($"Starting encounter: {encounter.type} - {encounter.description}");
+        EncounterHistoryPanel.Instance.AddEntry(encounter);
 
         ResolveEncounter(encounter);
         encounterIndex++;
@@ -67,18 +67,18 @@ public class ZoneManager : MonoBehaviour
         {
             if (car is ShieldCar shieldCar && !car.isDamaged)
             {
-                Debug.Log("Shield blocked hazard!");
+                EncounterHistoryPanel.Instance.AddEntry("Shield blocked hazard!");
                 return;
             }
         }
 
         // attack random car for now
-        Debug.Log("Hazard hits!");
+        EncounterHistoryPanel.Instance.AddEntry("Hazard hits!");
         TrainCar attackedCar = trainController.cars[Random.Range(0, trainController.CarCount)];        
         attackedCar.currentHealth--;
 
         if (attackedCar.isBroken)
-            Debug.Log($"{attackedCar.name} is broken!");
+            EncounterHistoryPanel.Instance.AddEntry($"{attackedCar.name} is broken!");
     }
 
     private void ResolveLoot()
@@ -87,7 +87,7 @@ public class ZoneManager : MonoBehaviour
         {
             if (car is CollectorCar collectorCar && !car.isDamaged)
             {
-                Debug.Log("Loot collected!");
+                EncounterHistoryPanel.Instance.AddEntry("Loot collected!");
                 
                 // add extra scrap here
 
@@ -95,6 +95,6 @@ public class ZoneManager : MonoBehaviour
             }
         }
 
-        Debug.Log("Missed loot!");
+        EncounterHistoryPanel.Instance.AddEntry("Missed loot!");
     }
 }

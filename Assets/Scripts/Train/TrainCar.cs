@@ -9,6 +9,11 @@ public class TrainCar : MonoBehaviour
     public bool isBroken => currentHealth <= 0;
 
     public virtual void OnHazard() { }
+
     public virtual void OnLoot() { }
-    public virtual void OnPowered() { }
+
+    public virtual void OnPowered()
+    {
+        EncounterHistoryPanel.Instance.AddEntry($"{carName} is powered");
+    }
 }

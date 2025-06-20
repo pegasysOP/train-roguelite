@@ -16,7 +16,7 @@ public class TrainController : MonoBehaviour
     {
         if (!CanAddCar)
         {
-            Debug.LogWarning("Not enough engine power to add car!");
+            EncounterHistoryPanel.Instance.AddEntry("Not enough engine power to add car!");
             return;
         }
 
