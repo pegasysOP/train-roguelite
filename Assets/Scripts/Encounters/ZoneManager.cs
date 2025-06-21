@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ZoneManager : MonoBehaviour
@@ -84,14 +85,13 @@ public class ZoneManager : MonoBehaviour
         {
             if (car is CollectorCar collectorCar && !car.isDamaged)
             {
-                EncounterHistoryPanel.Instance.AddEntry("Loot collected!");
-                
-                // add extra scrap here
-
+                EncounterHistoryPanel.Instance.AddEntry($"Extra {collectorCar.collectionQuantity} loot collected!");
+                GameManager.Instance.AddScrap(1 + collectorCar.collectionQuantity);
                 return;
             }
         }
 
-        EncounterHistoryPanel.Instance.AddEntry("Missed loot!");
+        EncounterHistoryPanel.Instance.AddEntry("Missed chance at extra loot");
+        GameManager.Instance.AddScrap(1); // only 1 by default
     }
 }

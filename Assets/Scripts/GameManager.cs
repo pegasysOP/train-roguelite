@@ -1,14 +1,19 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    [Header("Testing")]
     public TrainController trainController;
     public ZoneManager zoneManager;
     public List<TrainCar> testCarPrefabs = new List<TrainCar>();
+
+    [Header("UI")]
+    public TextMeshProUGUI scrapCounter;
+
+    private int scrapCount = 0;
 
     private void Awake()
     {
@@ -36,5 +41,11 @@ public class GameManager : MonoBehaviour
             new TrackEncounter() { type = EncounterType.Loot, description = "Scrap pile" },
             new TrackEncounter() { type = EncounterType.Hazard, description = "Bandit fire" }
         };
+    }
+
+    public void AddScrap(int amount)
+    {
+        scrapCount += amount;
+        scrapCounter.text = scrapCount.ToString();
     }
 }
