@@ -1139,8 +1139,10 @@ MonoBehaviour:
   zoneManager: {fileID: 989229923}
   testCarPrefabs:
   - {fileID: 1384949524607143480, guid: bf2ad33240b1445428db4e886f8143b0, type: 3}
-  - {fileID: 5038788111553495579, guid: 60a71c34a978e154fa070f9ef2c6cbea, type: 3}
+  - {fileID: 4844912377983368658, guid: 60a71c34a978e154fa070f9ef2c6cbea, type: 3}
   - {fileID: 6056211351091289835, guid: cbdc49470eaf80d49ac7a1abc02cf3f2, type: 3}
+  - {fileID: 2150407213997241794, guid: 78e9e49d22f2e0a4c8c6cf91087b6bea, type: 3}
+  - {fileID: 8227788372899910241, guid: 6ae1d8e492a6b4b49ae190156e461876, type: 3}
 --- !u!4 &989229922
 Transform:
   m_ObjectHideFlags: 0

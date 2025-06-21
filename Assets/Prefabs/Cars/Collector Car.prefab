@@ -96,9 +96,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2458442218379931341}
-  - component: {fileID: 1384949524607143480}
   - component: {fileID: 5451376798284842981}
   - component: {fileID: 8336356637867696831}
+  - component: {fileID: 1384949524607143480}
   m_Layer: 0
   m_Name: Collector Car
   m_TagString: Untagged
@@ -123,22 +123,6 @@ Transform:
   - {fileID: 1019888380575512756}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1384949524607143480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6534936453469233440}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cd2c76c0ed7ab949b1197f5499aa2bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  carName: Collector Car
-  currentHealth: 2
-  damageIndicator: {fileID: 8586969094447658372}
-  collectionQuantity: 3
 --- !u!212 &5451376798284842981
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -240,6 +224,22 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1384949524607143480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6534936453469233440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cd2c76c0ed7ab949b1197f5499aa2bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carName: Collector Car
+  currentHealth: 2
+  damageIndicator: {fileID: 8586969094447658372}
+  collectionQuantity: 3
 --- !u!1 &8586969094447658372
 GameObject:
   m_ObjectHideFlags: 0
