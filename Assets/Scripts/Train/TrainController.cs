@@ -13,7 +13,7 @@ public class TrainController : MonoBehaviour
 
     public bool CanAddCar => cars.Count < enginePower;
 
-    public void AddCar(TrainCar carPrefab)
+    public void AddCar(TrainCar carPrefab, bool animate = false)
     {
         if (!CanAddCar)
         {
@@ -23,22 +23,27 @@ public class TrainController : MonoBehaviour
 
         TrainCar newCar = Instantiate(carPrefab, carContainer);
         cars.Add(newCar);
-        RearrangeCars();
+        RearrangeCars(animate);
     }
 
-    public void RemoveCar(TrainCar car)
+    public void RemoveCar(TrainCar car, bool animate = false)
     {
         cars.Remove(car);
         Destroy(car.gameObject);
-        RearrangeCars();
+        RearrangeCars(animate);
     }
 
-    private void RearrangeCars()
+    private void RearrangeCars(bool animate)
     {
-        for (int i = 0; i < cars.Count; i++)
+        if (animate)
         {
-            //cars[i].transform.localPosition = new Vector3(-i - 1, 0, 0);
-            StartCoroutine(MoveToPosition(cars[i].transform, GetCarSlotPosition(i)));
+            for (int i = 0; i < cars.Count; i++)
+                StartCoroutine(MoveToPosition(cars[i].transform, GetCarSlotPosition(i)));
+        }
+        else
+        {
+            for (int i = 0; i < cars.Count; i++)
+                cars[i].transform.localPosition = GetCarSlotPosition(i);
         }
     }
 
@@ -81,7 +86,7 @@ public class TrainController : MonoBehaviour
 
         cars.Remove(draggedCar);
         cars.Insert(closestIndex, draggedCar);
-        RearrangeCars();
+        RearrangeCars(true);
     }
 
     public void ResetTrain()
