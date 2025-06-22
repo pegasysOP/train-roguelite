@@ -324,5 +324,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carName: Shield Car
+  carDescription: Protects the train from damage
   currentHealth: 2
   damageIndicator: {fileID: 338782977366302503}

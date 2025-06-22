@@ -237,6 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carName: Spike Car
+  carDescription: Deals damage to attackers
   currentHealth: 2
   damageIndicator: {fileID: 8586969094447658372}
   attackDamage: 2

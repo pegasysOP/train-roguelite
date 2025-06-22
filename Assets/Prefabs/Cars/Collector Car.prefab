@@ -237,6 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carName: Collector Car
+  carDescription: Increases scrap collection by 3
   currentHealth: 2
   damageIndicator: {fileID: 8586969094447658372}
   collectionQuantity: 3

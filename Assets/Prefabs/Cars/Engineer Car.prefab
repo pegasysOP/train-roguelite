@@ -237,6 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carName: Engineer Car
+  carDescription: Repairs a damaged car at the end of the encounter
   currentHealth: 2
   damageIndicator: {fileID: 6655255856143653710}
 --- !u!1 &8820332396944732990

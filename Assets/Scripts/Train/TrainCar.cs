@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 public class TrainCar : MonoBehaviour
 {
     public string carName;
+    [TextArea(2, 5)]
+    public string carDescription;
     public int currentHealth = 2; // 2: full, 1: damaged, 0: destroyed
 
     [Header("Visual")]
