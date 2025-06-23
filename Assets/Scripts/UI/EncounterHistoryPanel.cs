@@ -24,7 +24,7 @@ public class EncounterHistoryPanel : MonoBehaviour
     public void AddEntry(TrackEncounter encounter)
     {
         TextMeshProUGUI element = SpawnElement();
-        element.text = $"Starting encounter: {encounter.type} - {encounter.description}";
+        element.text = $"Starting encounter: {encounter.encounterName} - {encounter.description}";
     }
 
     public void AddEntry(string content)

@@ -1,13 +1,7 @@
-public enum EncounterType
-{
-    Hazard,
-    Loot,
-    Fork
-}
-
 [System.Serializable]
 public class TrackEncounter
 {
-    public EncounterType type;
-    public string description;
+    public Encounter encounterData;
+    public string encounterName => encounterData != null ? encounterData.encounterName : "";
+    public string description => encounterData != null ? encounterData.description : "";
 }

@@ -6,16 +6,24 @@ public class ZoneManager : MonoBehaviour
 {
     public TrainController trainController;
     public int energyPerZone = 3;
-    public List<TrackEncounter> upcomingEncounters= new List<TrackEncounter>();
+    public List<Encounter> upcomingEncounters = new List<Encounter>();
 
     private int energy;
-    private int encounterIndex = 0;
 
-    public void StartZone()
+
+    public void StartNextEncounter()
     {
-        energy = energyPerZone;
-        encounterIndex = 0;
-        ProceedToNextEncounter();
+        if (upcomingEncounters.Count == 0)
+        {
+            Debug.LogWarning("No upcoming encounters to resolve");
+            return;
+        }
+
+        Encounter currentEncounter = upcomingEncounters[0];
+        upcomingEncounters.RemoveAt(0);
+
+        EncounterHistoryPanel.Instance.AddEntry($"<b>Encounter</b>: {currentEncounter.encounterName} - {currentEncounter.description}");
+        currentEncounter.Resolve(trainController);
     }
 
     public void AssignPowerToCar(TrainCar car)
@@ -25,73 +33,5 @@ public class ZoneManager : MonoBehaviour
 
         car.OnPowered();
         energy--;
-    }
-
-    private void ProceedToNextEncounter()
-    {
-        if (encounterIndex >= upcomingEncounters.Count)
-        {
-            EncounterHistoryPanel.Instance.AddEntry("Zone complete!");
-            return;
-        }
-
-        TrackEncounter encounter = upcomingEncounters[encounterIndex];
-        EncounterHistoryPanel.Instance.AddEntry(encounter);
-
-        ResolveEncounter(encounter);
-        encounterIndex++;
-
-        // wait and call next encounter after a delay for now
-        Invoke(nameof(ProceedToNextEncounter), 2f);
-    }
-
-    private void ResolveEncounter(TrackEncounter encounter)
-    {
-        switch (encounter.type)
-        {
-            case EncounterType.Hazard:
-                ResolveHazard();
-                break;
-            case EncounterType.Loot:
-                ResolveLoot();
-                break;
-            case EncounterType.Fork:
-                Debug.Log("Fork not yet implemented");
-                break;
-        }
-    }
-
-    private void ResolveHazard()
-    {
-        //  shield car blocks damage
-        foreach (TrainCar car in trainController.cars)
-        {
-            if (car is ShieldCar shieldCar && !car.isDamaged)
-            {
-                EncounterHistoryPanel.Instance.AddEntry("Shield blocked hazard!");
-                return;
-            }
-        }
-
-        // attack random car for now
-        EncounterHistoryPanel.Instance.AddEntry("Hazard hits!");
-        TrainCar attackedCar = trainController.cars[Random.Range(0, trainController.CarCount)];
-        attackedCar.Damage();
-    }
-
-    private void ResolveLoot()
-    {
-        foreach (TrainCar car in trainController.cars)
-        {
-            if (car is CollectorCar collectorCar && !car.isDamaged)
-            {
-                EncounterHistoryPanel.Instance.AddEntry($"Extra {collectorCar.collectionQuantity} loot collected!");
-                GameManager.Instance.AddScrap(1 + collectorCar.collectionQuantity);
-                return;
-            }
-        }
-
-        EncounterHistoryPanel.Instance.AddEntry("Missed chance at extra loot");
-        GameManager.Instance.AddScrap(1); // only 1 by default
     }
 }

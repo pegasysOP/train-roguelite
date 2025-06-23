@@ -34,13 +34,6 @@ public class GameManager : MonoBehaviour
 
         foreach (TrainCar car in testCarPrefabs)
             trainController.AddCar(car);
-
-        zoneManager.upcomingEncounters = new List<TrackEncounter>
-        {
-            new TrackEncounter() { type = EncounterType.Hazard, description = "Rockslide" },
-            new TrackEncounter() { type = EncounterType.Loot, description = "Scrap pile" },
-            new TrackEncounter() { type = EncounterType.Hazard, description = "Bandit fire" }
-        };
     }
 
     public void AddScrap(int amount)
