@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
 
         foreach (TrainCar car in testCarPrefabs)
             trainController.AddCar(car);
+
+        trainController.PowerCars();
     }
 
     public void AddScrap(int amount)

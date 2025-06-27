@@ -7,9 +7,10 @@ public class HazardEncounter : Encounter
     {
         foreach (TrainCar car in train.cars)
         {
-            if (car is ShieldCar shieldCar && !car.isDamaged)
+            if (car is ShieldCar shieldCar && !car.isDamaged && car.isPowered)
             {
                 EncounterHistoryPanel.Instance.AddEntry("Shield car blocked hazard!");
+                car.UsePower();
                 car.DoPunchAnimation();
                 return;
             }

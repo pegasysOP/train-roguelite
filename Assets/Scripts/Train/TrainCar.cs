@@ -9,6 +9,7 @@ public class TrainCar : MonoBehaviour
     [TextArea(2, 5)]
     public string carDescription;
     public int currentHealth = 2; // 2: full, 1: damaged, 0: destroyed
+    public int energy = 0;
 
     [Header("Visual")]
     public GameObject damageIndicator;
@@ -16,6 +17,7 @@ public class TrainCar : MonoBehaviour
 
     public bool isDamaged => currentHealth <= 1;
     public bool isDestroyed => currentHealth <= 0;
+    public bool isPowered => energy > 0;
 
     private Vector3 offset;
     private bool dragging = false;
@@ -61,6 +63,27 @@ public class TrainCar : MonoBehaviour
         }
     }
 
+    public void Power()
+    {
+        energy++;
+        energyDisplay.AddEnergy();
+
+        OnPowered();
+    }
+
+    public void UsePower()
+    {
+        if (energy > 0)
+        {
+            energy--;
+            energyDisplay.RemoveEnergy();
+        }
+        else
+        {
+            Debug.LogWarning($"Trying to use power on car {carName} when it doesn't have enough");
+        }
+    }
+
     public virtual void OnHazard()
     {
     }
@@ -71,7 +94,6 @@ public class TrainCar : MonoBehaviour
 
     public virtual void OnPowered()
     {
-        EncounterHistoryPanel.Instance.AddEntry($"{carName} is powered");
     }
 
     public virtual void Damage()

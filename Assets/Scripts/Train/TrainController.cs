@@ -33,6 +33,14 @@ public class TrainController : MonoBehaviour
         RearrangeCars(animate);
     }
 
+    public void PowerCars()
+    {
+        foreach (TrainCar car in cars)
+        {
+            car.Power();
+        }
+    }
+
     private void RearrangeCars(bool animate)
     {
         if (animate)
