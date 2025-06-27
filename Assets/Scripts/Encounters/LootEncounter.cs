@@ -11,6 +11,7 @@ public class LootEncounter : Encounter
             {
                 EncounterHistoryPanel.Instance.AddEntry($"Extra {collectorCar.collectionQuantity} scrap collected!");
                 GameManager.Instance.AddScrap(1 + collectorCar.collectionQuantity);
+                car.DoPunchAnimation();
                 return;
             }
         }

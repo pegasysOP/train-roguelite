@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -71,6 +72,8 @@ public class TrainCar : MonoBehaviour
     public virtual void Damage()
     {
         currentHealth--;
+
+        DoPunchAnimation();
         
         if (isDestroyed)
         {
@@ -82,5 +85,10 @@ public class TrainCar : MonoBehaviour
             EncounterHistoryPanel.Instance.AddEntry($"{carName} is damaged!");
             damageIndicator.SetActive(true);
         }
+    }
+
+    public void DoPunchAnimation()
+    {
+        transform.DOPunchScale(Vector3.one / 2, 0.5f, 0, 0);
     }
 }

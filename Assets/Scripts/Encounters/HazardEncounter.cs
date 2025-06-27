@@ -10,6 +10,7 @@ public class HazardEncounter : Encounter
             if (car is ShieldCar shieldCar && !car.isDamaged)
             {
                 EncounterHistoryPanel.Instance.AddEntry("Shield car blocked hazard!");
+                car.DoPunchAnimation();
                 return;
             }
         }
