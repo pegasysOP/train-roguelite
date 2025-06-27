@@ -70,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7030777996345828789, guid: 17278fce977f22e4b9b94b6144d3551b, type: 3}
       propertyPath: m_Name
-      value: Engineer Car 2
+      value: Engineer Car
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -80,6 +80,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 3303563442483455599}
   m_SourcePrefab: {fileID: 100100000, guid: 17278fce977f22e4b9b94b6144d3551b, type: 3}
+--- !u!1 &1850579199114716227 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6655255856143653710, guid: 17278fce977f22e4b9b94b6144d3551b, type: 3}
+  m_PrefabInstance: {fileID: 5040271298609184525}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2621362563415349944 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7030777996345828789, guid: 17278fce977f22e4b9b94b6144d3551b, type: 3}
@@ -100,4 +105,16 @@ MonoBehaviour:
   carName: Engineer Car
   carDescription: Repairs a damaged car at the end of the encounter
   currentHealth: 2
-  damageIndicator: {fileID: 0}
+  damageIndicator: {fileID: 1850579199114716227}
+  energyDisplay: {fileID: 7252984996675167645}
+--- !u!114 &7252984996675167645 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2401935272808667792, guid: 17278fce977f22e4b9b94b6144d3551b, type: 3}
+  m_PrefabInstance: {fileID: 5040271298609184525}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6749648b7b6e46c48be56dfbcde57123, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

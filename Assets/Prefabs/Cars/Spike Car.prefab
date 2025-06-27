@@ -66,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7030777996345828789, guid: 17278fce977f22e4b9b94b6144d3551b, type: 3}
       propertyPath: m_Name
-      value: Spike Car 2
+      value: Spike Car
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -76,6 +76,22 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 785926776115009913}
   m_SourcePrefab: {fileID: 100100000, guid: 17278fce977f22e4b9b94b6144d3551b, type: 3}
+--- !u!114 &2707164501420199631 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2401935272808667792, guid: 17278fce977f22e4b9b94b6144d3551b, type: 3}
+  m_PrefabInstance: {fileID: 343580490542814303}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6749648b7b6e46c48be56dfbcde57123, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &6384014453943881489 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6655255856143653710, guid: 17278fce977f22e4b9b94b6144d3551b, type: 3}
+  m_PrefabInstance: {fileID: 343580490542814303}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7302292077346058730 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7030777996345828789, guid: 17278fce977f22e4b9b94b6144d3551b, type: 3}
@@ -96,5 +112,6 @@ MonoBehaviour:
   carName: Spike Car
   carDescription: Deals damage to attackers
   currentHealth: 2
-  damageIndicator: {fileID: 8586969094447658372, guid: 6ae1d8e492a6b4b49ae190156e461876, type: 3}
+  damageIndicator: {fileID: 6384014453943881489}
+  energyDisplay: {fileID: 2707164501420199631}
   attackDamage: 2

@@ -12,6 +12,7 @@ public class TrainCar : MonoBehaviour
 
     [Header("Visual")]
     public GameObject damageIndicator;
+    public CarEnergyDisplay energyDisplay;
 
     public bool isDamaged => currentHealth <= 1;
     public bool isDestroyed => currentHealth <= 0;
@@ -37,6 +38,8 @@ public class TrainCar : MonoBehaviour
                 transform.localScale = Vector3.one * 1.2f;
 
                 offset = transform.position - worldMouse;
+
+                energyDisplay.gameObject.SetActive(false);
             }
         }
 
@@ -53,6 +56,8 @@ public class TrainCar : MonoBehaviour
 
             // Snap to closest index
             FindFirstObjectByType<TrainController>().SnapCarToNearestSlot(this);
+
+            energyDisplay.gameObject.SetActive(true);
         }
     }
 
