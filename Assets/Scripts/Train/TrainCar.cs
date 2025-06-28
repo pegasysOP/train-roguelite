@@ -43,6 +43,19 @@ public class TrainCar : MonoBehaviour
         }
     }
 
+    public void AdjustPower(int amount)
+    {
+        energy += amount;
+
+        if (energy < 0)
+        {
+            Debug.LogWarning($"Trying to adjust power on car {carName} below 0, setting to 0");
+            energy = 0;
+        }
+
+        energyDisplay.SetEnergy(energy);
+    }
+
     public virtual void OnHazard()
     {
     }
@@ -52,6 +65,10 @@ public class TrainCar : MonoBehaviour
     }
 
     public virtual void OnPowered()
+    {
+    }
+
+    public virtual void OnRearranged()
     {
     }
 

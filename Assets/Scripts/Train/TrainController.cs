@@ -95,6 +95,10 @@ public class TrainController : MonoBehaviour
 
         cars.Remove(draggedCar);
         cars.Insert(closestIndex, draggedCar);
+
+        foreach (TrainCar car in cars)
+            car.OnRearranged();
+
         RearrangeCars(true);
     }
 
@@ -105,4 +109,26 @@ public class TrainController : MonoBehaviour
 
         cars.Clear();
     }
+
+    #region Car Helpers
+
+    public int GetCarIndex(TrainCar car)
+    {
+        return cars.IndexOf(car);
+    }
+
+    public TrainCar GetLeftNeighbor(TrainCar car)
+    {
+        int index = GetCarIndex(car);
+        return (index > 0) ? cars[index - 1] : null;
+    }
+
+    public TrainCar GetRightNeighbor(TrainCar car)
+    {
+        int index = GetCarIndex(car);
+        return (index < cars.Count - 1) ? cars[index + 1] : null;
+    }
+
+
+    #endregion
 }

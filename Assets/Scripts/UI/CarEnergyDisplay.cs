@@ -9,8 +9,11 @@ public class CarEnergyDisplay : MonoBehaviour
 
     public void AddEnergy(int amount = 1)
     {
-        GameObject bar = Instantiate(energyBarPrefab, transform);
-        energyBars.Add(bar);
+        for (int i = 0; i < amount; i++)
+        {
+            GameObject bar = Instantiate(energyBarPrefab, transform);
+            energyBars.Add(bar);
+        }
     }
 
     public void RemoveEnergy(int amount = 1)
@@ -40,13 +43,9 @@ public class CarEnergyDisplay : MonoBehaviour
 
     public void ClearEnergy()
     {
-        for (int i = 0; i < energyBars.Count; i++)
-        {
-            GameObject bar = energyBars[i];
-            energyBars.RemoveAt(i);
+        foreach (GameObject bar in energyBars)
             Destroy(bar);
-        }
 
-        energyBars = new List<GameObject>();
+        energyBars.Clear();
     }
 }
