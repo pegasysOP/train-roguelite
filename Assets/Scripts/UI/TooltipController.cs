@@ -36,7 +36,8 @@ public class TooltipController : MonoBehaviour
             TrainEngine engine = hit.collider.GetComponent<TrainEngine>();
             if (engine != null)
             {
-                Show("Train Engine", $"Provides enough power to pull {FindFirstObjectByType<TrainController>().enginePower} cars");
+                // TODO: replace with cleaner way to get engine power
+                Show("Train Engine", $"Provides enough power to pull {FindFirstObjectByType<TrainController>().enginePower} cars"); 
                 panelRect.position = mousePos + new Vector2(0, -10); // small offset
                 return;
             }

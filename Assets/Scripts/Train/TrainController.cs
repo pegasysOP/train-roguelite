@@ -7,10 +7,10 @@ public class TrainController : MonoBehaviour
     public Transform carContainer;
     public int enginePower = 6; // max number of cars
     public List<TrainCar> cars = new List<TrainCar>();
+    public bool AllowRearrangement = true;
 
     public int CarCount => cars.Count;
     public int EmptySlots => enginePower - CarCount;
-
     public bool CanAddCar => cars.Count < enginePower;
 
     public void AddCar(TrainCar carPrefab, bool animate = false)
@@ -22,6 +22,7 @@ public class TrainController : MonoBehaviour
         }
 
         TrainCar newCar = Instantiate(carPrefab, carContainer);
+        newCar.trainController = this;
         cars.Add(newCar);
         RearrangeCars(animate);
     }
