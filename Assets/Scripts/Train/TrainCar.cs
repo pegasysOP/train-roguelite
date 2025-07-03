@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,6 +22,27 @@ public class TrainCar : MonoBehaviour
     public bool isDestroyed => currentHealth <= 0;
     public bool isPowered => energy > 0;
 
+    private Coroutine actionLoop;
+
+    public void StartCombat()
+    {
+        if (isPowered)
+            actionLoop = StartCoroutine(CombatLoop());
+    }
+
+    private IEnumerator CombatLoop()
+    {
+        while (true)
+        {
+            PerformAction();
+            yield return new WaitForSeconds(2f);
+        }
+    }
+
+    protected virtual void PerformAction()
+    {
+        // override in subclasses like AttackerCar, RepairCar, etc.
+    }
 
     public void Power()
     {

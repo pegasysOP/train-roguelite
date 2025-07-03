@@ -108,9 +108,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cd2c76c0ed7ab949b1197f5499aa2bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trainController: {fileID: 0}
   carName: Collector Car
-  carDescription: Increases scrap collection by 3
+  carDescription: Increases scrap collection by <b>3</b>
   currentHealth: 2
+  energy: 0
   damageIndicator: {fileID: 8207139320996755930}
   energyDisplay: {fileID: 931340420583847940}
   collectionQuantity: 3

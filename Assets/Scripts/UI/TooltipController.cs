@@ -37,7 +37,7 @@ public class TooltipController : MonoBehaviour
             if (engine != null)
             {
                 // TODO: replace with cleaner way to get engine power
-                Show("Train Engine", $"Provides enough power to pull {FindFirstObjectByType<TrainController>().enginePower} cars"); 
+                Show("Train Engine", $"Provides enough power to pull <b>{FindFirstObjectByType<TrainController>().enginePower}</b> cars"); 
                 panelRect.position = mousePos + new Vector2(0, -10); // small offset
                 return;
             }

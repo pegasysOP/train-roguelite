@@ -7,11 +7,44 @@ public class TrainController : MonoBehaviour
     public Transform carContainer;
     public int enginePower = 6; // max number of cars
     public List<TrainCar> cars = new List<TrainCar>();
-    public bool AllowRearrangement = true;
+
+    [Header("Config")]
+    public bool AllowRearrangement = false;
+    public bool isEnemy = false;
 
     public int CarCount => cars.Count;
     public int EmptySlots => enginePower - CarCount;
     public bool CanAddCar => cars.Count < enginePower;
+
+    private CombatManager combatManager;
+
+    public void StartCombat(CombatManager combatManager)
+    {
+        this.combatManager = combatManager;
+    }
+
+    public bool AllCarsDestroyed()
+    {
+        foreach (TrainCar car in cars)
+        {
+            if (!car.isDestroyed)
+                return false;
+        }
+        return true;
+    }
+
+    public TrainCar GetOppositeEnemyCar(TrainCar attackingCar)
+    {
+        int index = GetCarIndex(attackingCar);
+        if (index < 0 || index >= cars.Count)
+            return null;
+
+        // if over the end just target last car
+        if (index >= combatManager.enemyTrain.CarCount)
+            index = combatManager.enemyTrain.CarCount - 1;
+
+        return combatManager.enemyTrain.cars[index];
+    }
 
     public void AddCar(TrainCar carPrefab, bool animate = false)
     {
