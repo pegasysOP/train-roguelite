@@ -22,6 +22,10 @@ public class TrainDragController : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(worldMouse, Vector2.zero);
         hoveredCar = hit.collider != null ? hit.collider.GetComponent<TrainCar>() : null;
 
+        // only drag this controllers cars
+        if (hoveredCar != null && hoveredCar.trainController != trainController)
+            hoveredCar = null;
+
         // begin dragging
         if (Mouse.current.leftButton.wasPressedThisFrame && hoveredCar != null)
         {

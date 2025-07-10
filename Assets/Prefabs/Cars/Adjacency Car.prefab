@@ -113,8 +113,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20266853e144e4848b66a823755d022a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trainController: {fileID: 0}
   carName: Adjacent Car
   carDescription: Doubles effectiveness of adjaccent cars
   currentHealth: 2
+  energy: 0
   damageIndicator: {fileID: 6787837729034849723}
   energyDisplay: {fileID: 2538458868668157029}

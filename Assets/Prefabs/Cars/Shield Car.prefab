@@ -113,8 +113,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90383ce1bda78b4b801d722dd6e5af8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trainController: {fileID: 0}
   carName: Shield Car
   carDescription: Protects the train from damage
   currentHealth: 2
+  energy: 0
   damageIndicator: {fileID: 6133822268893050372}
   energyDisplay: {fileID: 2888745034888919002}

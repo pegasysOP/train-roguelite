@@ -1,6 +1,3 @@
-using UnityEngine;
-using UnityEngine.InputSystem.XR;
-
 public class AdjacentCar : TrainCar
 {
     private TrainCar previousLeft;
@@ -8,10 +5,17 @@ public class AdjacentCar : TrainCar
 
     public override void OnPowered()
     {
+        SetAdjacencyBoost();
+
         EncounterHistoryPanel.Instance.AddEntry($"{carName} is powered and ready to boost");
     }
 
     public override void OnRearranged()
+    {
+        SetAdjacencyBoost();
+    }
+
+    private void SetAdjacencyBoost()
     {
         TrainCar currentLeft = trainController.GetLeftNeighbor(this);
         TrainCar currentRight = trainController.GetRightNeighbor(this);

@@ -12,15 +12,36 @@ public class TrainController : MonoBehaviour
     public bool AllowRearrangement = false;
     public bool isEnemy = false;
 
+    [Header("TESTING")]
+    public List<TrainCar> testCarPrefabs = new List<TrainCar>();
+
     public int CarCount => cars.Count;
     public int EmptySlots => enginePower - CarCount;
     public bool CanAddCar => cars.Count < enginePower;
 
     private CombatManager combatManager;
 
+    private void Start()
+    {
+        // for testing
+        foreach (TrainCar car in testCarPrefabs)
+            AddCar(car);
+
+        PowerCars();
+    }
+
     public void StartCombat(CombatManager combatManager)
     {
         this.combatManager = combatManager;
+
+        AllowRearrangement = false;
+    }
+
+    public void EndCombat()
+    {
+        this.combatManager = null;
+
+        AllowRearrangement = !isEnemy; // only allow for player
     }
 
     public bool AllCarsDestroyed()
@@ -91,22 +112,22 @@ public class TrainController : MonoBehaviour
 
     public Vector3 GetCarSlotPosition(int index)
     {
-        return new Vector3(-index - 1, 0f, 0f);
+        return new Vector3(-index - 1, 0, 0f);
     }
 
     private IEnumerator MoveToPosition(Transform movingObject, Vector3 targetPos)
     {
         float t = 0;
-        Vector3 startPos = movingObject.position;
+        Vector3 startPos = movingObject.localPosition;
 
         while (t < 1f)
         {
             t += Time.deltaTime * 6f;
-            movingObject.position = Vector3.Lerp(startPos, targetPos, t);
+            movingObject.localPosition = Vector3.Lerp(startPos, targetPos, t);
             yield return null;
         }
 
-        movingObject.position = targetPos;
+        movingObject.localPosition = targetPos;
     }
 
     public void SnapCarToNearestSlot(TrainCar draggedCar)
@@ -118,7 +139,7 @@ public class TrainController : MonoBehaviour
         {
             float carSlotPos = GetCarSlotPosition(i).x;
 
-            float distance = Mathf.Abs(draggedCar.transform.position.x - GetCarSlotPosition(i).x);
+            float distance = Mathf.Abs(draggedCar.transform.localPosition.x - GetCarSlotPosition(i).x);
             if (distance < shortestDistance)
             {
                 shortestDistance = distance;
@@ -153,13 +174,13 @@ public class TrainController : MonoBehaviour
     public TrainCar GetLeftNeighbor(TrainCar car)
     {
         int index = GetCarIndex(car);
-        return (index > 0) ? cars[index - 1] : null;
+        return (index < cars.Count - 1) ? cars[index + 1] : null;
     }
 
     public TrainCar GetRightNeighbor(TrainCar car)
     {
         int index = GetCarIndex(car);
-        return (index < cars.Count - 1) ? cars[index + 1] : null;
+        return (index > 0) ? cars[index - 1] : null;
     }
 
 

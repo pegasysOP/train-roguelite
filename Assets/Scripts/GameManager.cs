@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 
     public TrainController trainController;
     public ZoneManager zoneManager;
-    public List<TrainCar> testCarPrefabs = new List<TrainCar>();
+    public CombatManager combatManager;
 
     [Header("UI")]
     public TextMeshProUGUI scrapCounter;
@@ -27,15 +27,9 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-
-    private void Start()
-    { 
-        // for testing
-
-        foreach (TrainCar car in testCarPrefabs)
-            trainController.AddCar(car);
-
-        trainController.PowerCars();
+    public void StartCombat()
+    {
+        combatManager.StartCombat();
     }
 
     public void AddScrap(int amount)

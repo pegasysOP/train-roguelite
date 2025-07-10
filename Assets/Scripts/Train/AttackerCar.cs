@@ -1,6 +1,3 @@
-using UnityEngine;
-using UnityEngine.InputSystem.XR;
-
 public class AttackerCar : TrainCar
 {
     protected override void PerformAction()

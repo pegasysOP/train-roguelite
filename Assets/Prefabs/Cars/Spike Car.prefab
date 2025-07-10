@@ -109,9 +109,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a02d52797b6c684fb099ed0c2cdd8f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trainController: {fileID: 0}
   carName: Spike Car
   carDescription: Deals damage to attackers
   currentHealth: 2
+  energy: 0
   damageIndicator: {fileID: 6384014453943881489}
   energyDisplay: {fileID: 2707164501420199631}
   attackDamage: 2

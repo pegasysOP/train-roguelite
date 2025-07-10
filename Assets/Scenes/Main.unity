@@ -252,7 +252,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Next Encounter
+  m_text: Start Combat
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -740,6 +740,18 @@ PrefabInstance:
       propertyPath: isEnemy
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 895948296942305284, guid: 1c5b6b3df02b49e4fa85f0f894fe9afe, type: 3}
+      propertyPath: testCarPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 895948296942305284, guid: 1c5b6b3df02b49e4fa85f0f894fe9afe, type: 3}
+      propertyPath: 'testCarPrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8501951030667901070, guid: 25576e606dcf42b4aa91c1c1b82b4154, type: 3}
+    - target: {fileID: 895948296942305284, guid: 1c5b6b3df02b49e4fa85f0f894fe9afe, type: 3}
+      propertyPath: 'testCarPrefabs.Array.data[1]'
+      value: 
+      objectReference: {fileID: 785926776115009913, guid: 68ac6607c67076547a903b03b4afc576, type: 3}
     - target: {fileID: 2231914640441850081, guid: 1c5b6b3df02b49e4fa85f0f894fe9afe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1340,12 +1352,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trainController: {fileID: 110626167}
   zoneManager: {fileID: 989229923}
-  testCarPrefabs:
-  - {fileID: 3539660582446008754, guid: a2edaf550ef5bb2419760c414818867a, type: 3}
-  - {fileID: 661130145638326917, guid: 2b5eddaae83b841439503b3fea294e79, type: 3}
-  - {fileID: 3303563442483455599, guid: 0869d14008daa2c4f9c40098325c0cc9, type: 3}
-  - {fileID: 8501951030667901070, guid: 25576e606dcf42b4aa91c1c1b82b4154, type: 3}
-  - {fileID: 785926776115009913, guid: 68ac6607c67076547a903b03b4afc576, type: 3}
+  combatManager: {fileID: 989229924}
   scrapCounter: {fileID: 1684170884}
 --- !u!4 &989229922
 Transform:
@@ -1394,9 +1401,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTrain: {fileID: 110626167}
   enemyTrain: {fileID: 535566968}
-  OnCombatEnd:
-    m_PersistentCalls:
-      m_Calls: []
+  combatDuration: 5
 --- !u!1 &1035568157
 GameObject:
   m_ObjectHideFlags: 0
@@ -1745,7 +1750,7 @@ GameObject:
   - component: {fileID: 1752986098}
   - component: {fileID: 1752986097}
   m_Layer: 5
-  m_Name: Next Encounter Button
+  m_Name: Start Encounter Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1815,9 +1820,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 989229923}
-        m_TargetAssemblyTypeName: ZoneManager, Assembly-CSharp
-        m_MethodName: StartNextEncounter
+      - m_Target: {fileID: 989229924}
+        m_TargetAssemblyTypeName: CombatManager, Assembly-CSharp
+        m_MethodName: StartCombat
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2303,6 +2308,30 @@ PrefabInstance:
       propertyPath: AllowRearrangement
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 895948296942305284, guid: 1c5b6b3df02b49e4fa85f0f894fe9afe, type: 3}
+      propertyPath: testCarPrefabs.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 895948296942305284, guid: 1c5b6b3df02b49e4fa85f0f894fe9afe, type: 3}
+      propertyPath: 'testCarPrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 3539660582446008754, guid: a2edaf550ef5bb2419760c414818867a, type: 3}
+    - target: {fileID: 895948296942305284, guid: 1c5b6b3df02b49e4fa85f0f894fe9afe, type: 3}
+      propertyPath: 'testCarPrefabs.Array.data[1]'
+      value: 
+      objectReference: {fileID: 661130145638326917, guid: 2b5eddaae83b841439503b3fea294e79, type: 3}
+    - target: {fileID: 895948296942305284, guid: 1c5b6b3df02b49e4fa85f0f894fe9afe, type: 3}
+      propertyPath: 'testCarPrefabs.Array.data[2]'
+      value: 
+      objectReference: {fileID: 3303563442483455599, guid: 0869d14008daa2c4f9c40098325c0cc9, type: 3}
+    - target: {fileID: 895948296942305284, guid: 1c5b6b3df02b49e4fa85f0f894fe9afe, type: 3}
+      propertyPath: 'testCarPrefabs.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8501951030667901070, guid: 25576e606dcf42b4aa91c1c1b82b4154, type: 3}
+    - target: {fileID: 895948296942305284, guid: 1c5b6b3df02b49e4fa85f0f894fe9afe, type: 3}
+      propertyPath: 'testCarPrefabs.Array.data[4]'
+      value: 
+      objectReference: {fileID: 785926776115009913, guid: 68ac6607c67076547a903b03b4afc576, type: 3}
     - target: {fileID: 2231914640441850081, guid: 1c5b6b3df02b49e4fa85f0f894fe9afe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

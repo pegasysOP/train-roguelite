@@ -102,9 +102,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e52d11c263373344bdad121d6dcd13a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trainController: {fileID: 0}
   carName: Engineer Car
   carDescription: Repairs a damaged car at the end of the encounter
   currentHealth: 2
+  energy: 0
   damageIndicator: {fileID: 1850579199114716227}
   energyDisplay: {fileID: 7252984996675167645}
 --- !u!114 &7252984996675167645 stripped
