@@ -103,11 +103,13 @@ public class TrainCar : MonoBehaviour
         if (isDestroyed)
         {
             EncounterHistoryPanel.Instance.AddEntry($"{carName} is destroyed!");
+            TextBox.Instance.ShowText($"{carName} is destroyed!");
             gameObject.SetActive(false);
         }
         else if (isDamaged)
         {
             EncounterHistoryPanel.Instance.AddEntry($"{carName} is damaged!");
+            TextBox.Instance.ShowText($"{carName} is damaged!");
             damageIndicator.SetActive(true);
         }
     }

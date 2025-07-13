@@ -72,6 +72,7 @@ public class TrainController : MonoBehaviour
         if (!CanAddCar)
         {
             EncounterHistoryPanel.Instance.AddEntry("Not enough engine power to add car!");
+            TextBox.Instance.ShowText("Not enough engine power to add car!");
             return;
         }
 

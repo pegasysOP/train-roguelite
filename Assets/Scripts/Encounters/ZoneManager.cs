@@ -16,6 +16,7 @@ public class ZoneManager : MonoBehaviour
         if (upcomingEncounters.Count == 0)
         {
             EncounterHistoryPanel.Instance.AddEntry($"End of <b>Zone</b>");
+            TextBox.Instance.ShowText($"End of <b>Zone</b>");
             Debug.LogWarning("No upcoming encounters to resolve");
             return;
         }
@@ -24,6 +25,7 @@ public class ZoneManager : MonoBehaviour
         upcomingEncounters.RemoveAt(0);
 
         EncounterHistoryPanel.Instance.AddEntry($"<b>Encounter</b>: {currentEncounter.encounterName} - {currentEncounter.description}");
+        TextBox.Instance.ShowText($"<b>Encounter</b>: {currentEncounter.encounterName} - {currentEncounter.description}");
         currentEncounter.Resolve(trainController);
     }
 

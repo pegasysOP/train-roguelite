@@ -19,5 +19,6 @@ public class HazardEncounter : Encounter
         TrainCar target = train.cars[Random.Range(0, train.CarCount)];
         target.Damage();
         EncounterHistoryPanel.Instance.AddEntry($"Hazard hits {target.carName}");
+        TextBox.Instance.ShowText($"Hazard hits {target.carName}");
     }
 }

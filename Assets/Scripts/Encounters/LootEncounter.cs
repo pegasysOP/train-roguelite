@@ -10,6 +10,7 @@ public class LootEncounter : Encounter
             if (car is CollectorCar collectorCar && !car.isDamaged && car.isPowered)
             {
                 EncounterHistoryPanel.Instance.AddEntry($"Extra {collectorCar.collectionQuantity} scrap collected!");
+                TextBox.Instance.ShowText($"Extra {collectorCar.collectionQuantity} scrap collected!");
                 GameManager.Instance.AddScrap(1 + collectorCar.collectionQuantity);
                 car.UsePower();
                 car.DoPunchAnimation();

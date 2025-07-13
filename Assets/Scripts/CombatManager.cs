@@ -25,6 +25,7 @@ public class CombatManager : MonoBehaviour
         enemyTrain.StartCombat(this);
 
         EncounterHistoryPanel.Instance.AddEntry("Combat started");
+        TextBox.Instance.ShowText("Combat started");
 
         StartCoroutine(CombatLoop());
     }
@@ -70,10 +71,12 @@ public class CombatManager : MonoBehaviour
         if (playerWon)
         {
             EncounterHistoryPanel.Instance.AddEntry("You won the combat!");
+            TextBox.Instance.ShowText("You won the combat!");
         }
         else
         {
             EncounterHistoryPanel.Instance.AddEntry("You were defeated...");
+            TextBox.Instance.ShowText("You were defeated...");
         }
     }
 
